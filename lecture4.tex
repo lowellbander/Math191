@@ -75,7 +75,7 @@
        \vspace{4mm}
        \hbox to 6.28in { {\Large \hfill Lecture #1: #3  \hfill} }
        \vspace{2mm}
-       \hbox to 6.28in { {\it Lecturer: #4 \hfill Scribe: #5} }
+       \hbox to 6.28in { {\it Lecturer: #4 \hfill Scribes: #5} }
       }
    }
    \end{center}
@@ -154,5 +154,48 @@ Var(z) &= E[(z-E(z))^2]\\
 \begin{lemma}
 Something about the expected value of the square of a random variable.
 \end{lemma}
+
+\begin{proof}
+Not yet sure how things fit together, so just gonna transcribe the equations I have for now.\\
+
+\begin{align}
+E(z^2) &= E[(z - E(z))^2]
+\end{align}
+
+\begin{align}
+y = f(x) + \epsilon : \epsilon \sim N(0, \Delta^2) % very low confidence on the second parameter here.
+\end{align}
+
+Let $\{(x_i, y_i) | i = 1, N\}$ be the training sample. Fix some hypothesis(?) $h(x)$ [e.g. $h(x) = ax + b$] such that we minimize the squared error $\sum_{i=1}^{N} (y_i - h(x_i))^2$. \\
+
+We observe(?) a new test point coming in $(x_o, y_o)$ such that they(?) are distributed by a probability density function $p$.\\
+
+Observe that $y_o = f(x_o) + \epsilon$.\\
+
+Our goal is to minimize reducible error, so let us express the reducible error in terms of the bias error and the variance error. If we let $y_o$ be the ground truth and $h(x_o)$ be our forecast, then the reducible error can be expressed as
+
+\begin{align}
+E[(y_o - h(x_o))^2] &= E[y_o^2 - 2h(x_o)y_o + (h(x_o))^2]\\
+&=E[y_o^2] - 2E[h(x_o)\cdot y_o] + E[(h(x_o))^2]\\
+&= E[(y_o - E(y_o))^2] + (E(y_o))^2 - 2\cdot E[h(x_o)\cdot (f(x_o) + \epsilon)] + E[(h(x_o) - \hbar(x_o))^2] + (\hbar(x_o))^2
+\end{align}
+
+Since $\epsilon$ has a mean of zero, the term $2\cdot E[h(x_o)\cdot (f(x_o) + \epsilon)]$ can be rewritten as $2E[h(x_o)\cdot f(x_o)]$ which can in turn be rewritten as $2f(x_o)\cdot\hbar(x_o)$. And so, our above decomposition continues as 
+
+\begin{align}
+&= E[(y_o - E(y_o))^2] + (E(y_o))^2 - 2f(x_o)\cdot\hbar(x_o) + E[(h(x_o) - \hbar(x_o))^2] + (\hbar(x_o))^2\\
+&= E[(y_o - E(y_o))^2] + (E(y_o))^2 - 2f(x_o)\cdot\hbar(x_o) + E[(h(x_o)+E[(h(x_o) - \hbar(x_o))])^2] + (\hbar(x_o))^2\\
+&= E(\epsilon^2) + E[(h(x_o) - \hbar(x_o))^2] + (f(x_o))^2 - 2f(x_o)\hbar(x_o) + (\hbar(x_o))^2\\
+&= E(\epsilon^2) + E[(h(x_o) - \hbar(x_o))^2] + (f(x_o) - \hbar(x_o))^2\\
+&=Var(\epsilon) + Var(h) + Bias(h(x_o))
+\end{align}
+
+\end{proof}
+
+\section{Pearson Correlation Measures}
+\section{Properties of Population Correlation}
+\section{Bivariate Normal Distribution}
+\section{Properties of Sample Correlation}
+\section{Drawbacks of Pearson Correlation}
 
 \end{document}
