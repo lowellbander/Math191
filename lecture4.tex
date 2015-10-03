@@ -139,4 +139,20 @@
 
 \lecture{4}{1}{October 2, 2015}{Mihai Cucuringu}{Eric Aberbook \& Lowell Bander}
 
+\section{Bias-Variance Decomposition}
+
+If we let $z$ be a random variable, then we can express the variance of $z$ as follows.
+
+\begin{align}
+Var(z) &= E[(z-E(z))^2]\\
+&= E[z^2 - 2zE(z) + (E(z))^2]\\
+&= E(z^2) - 2E(zE(z)) + E[E(z)^2]\\
+&= E(z^2) - 2(E(z))^2 + (E(z))^2\\
+&= E(z^2) - (E(z))^2
+\end{align}
+
+\begin{lemma}
+Something about the expected value of the square of a random variable.
+\end{lemma}
+
 \end{document}
