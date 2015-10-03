@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+
+% \setlength{\topmargin}{9pt}
+% \setlength{\textheight}{9in}
+% \setlength{\headheight}{2pt}
+% \setlength{\headsep}{4pt}
+% \setlength{\oddsidemargin}{0.25in}
+% \setlength{\textwidth}{6in}
+% \pagestyle{plain}
+
+
+\usepackage{amsmath,amssymb,amsrefs}
+\usepackage{amscd}
+\usepackage{latexsym}
+\usepackage{graphics}
+
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\addtolength{\topmargin}{-1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8in}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% \setlength{\topmargin}{0in}
+% \setlength{\headheight}{0in}
+% \setlength{\headsep}{0in}
+% \setlength{\textheight}{7.7in}
+% \setlength{\textwidth}{6.5in}
+% \setlength{\oddsidemargin}{0in}
+% \setlength{\evensidemargin}{0in}
+% \setlength{\parindent}{0.25in}
+% \setlength{\parskip}{0.25in}
+
+\usepackage{subfigure}
+\usepackage{graphicx}
+
+%
+% this command enables to remove a whole part of the text 
+% from the printout
+% to use it just enter
+% \remove{  
+% before the text to be excluded and
+% } 
+% after the text
+\newcommand{\remove}[1]{}
+
+%
+% The following macros are used to generate nice code for programs.
+% See example on how to use it below
+%
+
+%%%%%%%%%%%%%%%%%%%%% program macros %%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%% End of PROGRAM macros %%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\lecture}[5]{
+   \pagestyle{headings}
+   \thispagestyle{plain}
+   \newpage
+%   \setcounter{chapter}{#1}
+%   \setcounter{page}{#2}
+%  \set\thechapter{#3}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{
+    \hbox to 6.28in { {\bf MATH 191 Topics in Data Science: Algorithms and Math. Foundations
+                        \hfill  - Fall 2015} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #3  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: #4 \hfill Scribe: #5} }
+      }
+   }
+   \end{center}
+   \markboth{Lecture #1: #3}{Lecture #1: #3}
+   \vspace*{4mm}
+}
+
+%
+% Use these macros for organizing sections of your notes.
+% Each command takes two arguments: (1) the title of the section and and
+% (2) a keyword for that section to appear in the index.  (See examples.)
+% Please don't use \section, \subsection, and \subsubsection directly!
+%
+
+\newcommand{\topic}[2]{\section{#1} \index{#2} \markright{#1}}
+\newcommand{\subtopic}[2]{\subsection{#1} \index{#2}}
+\newcommand{\subsubtopic}[2]{\subsubsection{#1} \index{#2}}
+ 
+%
+% Convention for citations is first author's last name followed by other
+% authors' last initials, followed by the year.  For example, to cite the
+% seventh entry in the course bibliography, you would type: \cite{BurnsL80}
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+%
+
+\renewcommand{\cite}[1]{[#1]}
+
+%
+% These are just to make things a little easier:
+%
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\blank}{\vspace{1ex}}   % generates a blank line in the output
+
+%
+% Use these for theorems, lemmas, proofs, etc.
+%
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\qed}{\hfill $\Box$}
+% \newenvironment{proof}{\par{\bf Proof:}}{\qed \par}
+\newenvironment{proof}{{\em Proof:}}{\hfill\rule{2mm}{2mm}}
+
+%
+% Use the following for definitions.
+% \bigdef is for definitions to be set off by themselves; \smalldef is for
+% definitions given in the middle of a paragraph.
+%
+\newenvironment{dfn}{{\vspace*{1ex} \noindent \bf Definition }}{\vspace*{1ex}}
+\newcommand{\bigdef}[2]{\index{#1}\begin{dfn} {\rm #2} \end{dfn}}
+\newcommand{\smalldef}[1]{\index{#1} {\em #1}}
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+% \usepackage{subfigure}
+% \usepackage{graphicx}
+
+\begin{document}
+
+\lecture{4}{1}{October 2, 2015}{Mihai Cucuringu}{Eric Aberbook \& Lowell Bander}
+
+\end{document}
