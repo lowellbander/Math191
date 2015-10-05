@@ -13,6 +13,7 @@
 \usepackage{amscd}
 \usepackage{latexsym}
 \usepackage{graphics}
+\usepackage{amssymb}
 
 
 \setlength{\oddsidemargin}{0in}
@@ -152,10 +153,14 @@ Var(z) &= E[(z-E(z))^2]\\
 \end{align}
 
 \begin{lemma}
-Something about the expected value of the square of a random variable.
+\begin{align}
+E(z^2) = E[(z-E(z)^2)]+[E(z)^2]
+\end{align}
 \end{lemma}
 
 \begin{proof}
+
+
 Not yet sure how things fit together, so just gonna transcribe the equations I have for now.\\
 
 \begin{align}
@@ -166,9 +171,9 @@ E(z^2) &= E[(z - E(z))^2]
 y = f(x) + \epsilon : \epsilon \sim N(0, \Delta^2) % very low confidence on the second parameter here.
 \end{align}
 
-Let $\{(x_i, y_i) | i = 1, N\}$ be the training sample. Fix some hypothesis(?) $h(x)$ [e.g. $h(x) = ax + b$] such that we minimize the squared error $\sum_{i=1}^{N} (y_i - h(x_i))^2$. \\
+Let $\{(x_i, y_i) | i = 1, N\}$ be the training sample. We want to fit some hypothesis function $h(x)$ [e.g. $h(x) = ax + b$] such that we minimize the squared error represented by $\sum_{i=1}^{N} (y_i - h(x_i))^2$. \\
 
-We observe(?) a new test point coming in $(x_o, y_o)$ such that they(?) are distributed by a probability density function $p$.\\
+Imagine a new test points coming in represented by $(x_o, y_o)$ such that they are distributed by a probability density function $p$.\\
 
 Observe that $y_o = f(x_o) + \epsilon$.\\
 
@@ -193,7 +198,48 @@ Since $\epsilon$ has a mean of zero, the term $2\cdot E[h(x_o)\cdot (f(x_o) + \e
 \end{proof}
 
 \section{Pearson Correlation Measures}
+
+The Pearson correlation, represented by \(\rho\) is the measure of linear dependence between variables.
+There are two representations of \(\rho\): \\
+
+Population Correlation:
+\begin{align}
+Cor(X,Y)
+&= \dfrac{Cov(X,Y)}{\sqrt{Var(X)}\sqrt{Var(Y)}}
+\end{align}
+
+%Code below not exactly working
+Sample Correlation:
+%\begin{align}
+
+cor(x,y)
+%&= \dfrac{cov(x,y)}{\sqrt{var(X)}\sqrt{var(Y)}} 
+%&= \dfrac{(x - \bar{x}1)(y - \bar{y}1)}{$\| \mathbf{x - \bar{x}1} \|$$\| \mathbf{y - \bar{y}1} \|$}
+
+%\end{align}
+
+Note the difference between Population and Sample- \\
+Sample- A subset of items from a larger population that is collected to make inferences \\
+Population- The total collection of items about which you want to make inferences.
+
+
+
 \section{Properties of Population Correlation}
+The following are all relevant properties of \(\rho\):
+
+\begin{itemize}
+\item \textit{Cor(X,X)} = 1
+\item \textit{Cor(X,Y)} = \textit{Cor(Y,X)} 
+\item \textit{Cor(aX + b, Y)} = sign(a)Cor(X,Y) for any a,b \epsilon R
+%\item -1 \leq \textit{Cor(X,Y)}  \leq 1 
+%\item \textit{Cor(X,Y)}  =  1 if and only if \textit{Y = aX + b} for some a,b \epsilon \mathbf{R}, with a \neq 0 
+%\item If  \textit{(X,Y)} are independent then \texit{Cor(X,Y)} = 0
+%\item 5
+
+
+
+\end{itemize}
+
 \section{Bivariate Normal Distribution}
 \section{Properties of Sample Correlation}
 \section{Drawbacks of Pearson Correlation}
