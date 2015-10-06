@@ -229,16 +229,47 @@ The following are all relevant properties of \(\rho\):
 \item $Cor(X,Y) = Cor(Y,X)$
 \item \textit{Cor(aX + b, Y)} = sign(a)Cor(X,Y) for any a,b $\epsilon$ R
 \item $-1 \leq \textit{Cor(X,Y)}  \leq 1 $
-\item $Cor(X,Y)  =  1$ if and only if $Y = aX + b$ for some a,b $\epsilon \mathbf{R}$ with a $\neq$ 0 
+\item $|Cor(X,Y)  =  1|$ if and only if $Y = aX + b$ for some a,b $\epsilon \mathbf{R}$ with a $\neq$ 0 
 \item If  \textit{(X,Y)} are independent then \textit{Cor(X,Y)} = 0
-%\item 5
-
+\item If $Cor(X,Y) = 0$ then $X,Y$ need not be independent.
+%\item If $(X,Y)$ is bivariate normal and $Cor(X,Y) = 0$, then $X,Y$ are independent
 
 
 \end{itemize}
 
 \section{Bivariate Normal Distribution}
+Two-dimensional Gaussian distribution
+The random vector $Z = (X,Y)$ $\epsilon$ $\mathbf{R}$ has a bivariate normal distribution
+
+
 \section{Properties of Sample Correlation}
+
+\begin{itemize}
+\item $cor(x,x) = 1$
+\item $cor(x,y) = cor(y,x)$
+\item \textit{cor(ax + b, y)} = sign(a)cor(x,y) for any a,b $\epsilon$ R
+\item $-1 \leq \textit{cor(x,y)}  \leq 1 $
+\item $|cor(x,y)  =  1|$ if and only if $y = ax + b$ for some a,b $\epsilon \mathbf{R}$ with a $\neq$ 0
+\item $cor(x,y) = 0$ iff x,y are orthogonal
+\item If $x,y$ are centered then $cor(x,y) = cos\theta$, where $\theta$ is the angle between the vectors $x,y$ $\epsilon \mathbf{R^n}$ 
+
+
+
+\end{itemize}
+
 \section{Drawbacks of Pearson Correlation}
+The Pearson Coefficient $\rho$ has many applications; it is by far the most popular tool in the process of understanding bivariate relationships, and it also has easy means of calculation and interpretability.
+
+Some of the drawbacks are as follows:
+
+\begin{itemize}
+\item $\rho$ does not guarantee a casual relationship between variables
+\item just because there is no correlation between variables, we can not conclude there is no relationship between them
+\item it is only suited well to continuous, normally distributed data
+\item $\rho$ is easily corrupted by outliers
+\item it is only a measure of \textbf{linear} dependency; does not work for the vast amount of nonlinear data out there
+
+\end{itemize}
+
 
 \end{document}
