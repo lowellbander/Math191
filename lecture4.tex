@@ -238,9 +238,26 @@ The following are all relevant properties of \(\rho\):
 \end{itemize}
 
 \section{Bivariate Normal Distribution}
-Two-dimensional Gaussian distribution
-The random vector $Z = (X,Y)$ $\epsilon$ $\mathbf{R}$ has a bivariate normal distribution
+The bivariate normal distribution is two-dimensional Gaussian distribution. The random vector $Z = (X,Y)$ $\epsilon$ $\mathbf{R^2}$ has a bivariate normal distribution
+\begin{align}
+Z \sim N(\mu, \Sigma),
+\end{align}
+where $\mu \in \mathbf{R^2}$ is the mean and $\Sigma \in \mathbf{R^{2x2}}$ is the covariance matrix.\\
+\begin{align}
+\mu &= \begin{bmatrix}\mu_X \\ \mu_Y\end{bmatrix} &
+\Sigma &= \begin{bmatrix}\sigma^2_X && \rho\sigma_X\sigma_Y \\ \rho\sigma_X\sigma_Y && \sigma^2_Y \end{bmatrix}
+\end{align}
+where $E[X] = \mu_X$, $E[Y] = \mu_Y$, $Var(X)=\sigma^2_X$, $Var(Y)=\sigma^2_Y$, $Cov(X,Y)=\rho\sigma_X\sigma_Y$, and $Cor(X,Y)=\rho$.\\
 
+The probability density function is given by
+\begin{align}
+f_(X,Y) = \frac{1}{2\pi\sqrt{det(\Sigma)}}e^{-\frac{1}{2}(z-\mu)^T\Sigma^{-1}(z-\mu)}
+\end{align}
+
+\begin{itemize}
+\item Fact 1: $\rho = 0$ implies that $X$ and $Y$ are independent of the random variable.
+\item Fact 2: Joint normality implies marginal normality.
+\end{itemize}
 
 \section{Properties of Sample Correlation}
 
