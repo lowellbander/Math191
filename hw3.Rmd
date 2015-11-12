@@ -5,7 +5,7 @@ date: "November 11, 2015"
 output: pdf_document
 ---
 
-Problem 2, PCA
+# Problem 2, PCA
 
 ```{r}
 run_PCA <- function() {
@@ -27,32 +27,40 @@ xtrain <- xtrain[complete.cases(xtrain),]
 myPCA = prcomp(xtrain, center = TRUE, scale. = TRUE, retx=TRUE);
 loadings <- myPCA$x
 top5 <- subset(loadings, select=-c(PC6,PC7,PC8,PC9,PC10))
-
-
 ```
 
+Didn't finish this last part yet.
 
-```{r}
+# Problem 3, Random Matrix Theory
 
-```
-
-Problem 3, Random Matrix Theory
+We can compute and plot a histogram of the eigenvalues of the empirical covariance matrix like so:
 
 ```{r}
 load("~/Downloads/CorrMtx_2012_2015_SP500.data")
-# RETS
+
 drawHist <- function(data) {
+  empiricalCovarianceMatrix <- cor(data)
+  eigenValues <- eigen(empiricalCovarianceMatrix)$values
+  hist(eigenValues, breaks=50)  
+}
+
+drawHist(RETS)
+```
+
+If we now plot the same spectrum, but leave out the largest eigen values, we obtain the following histogram:
+
+```{r}
+drawHistLeaveOutLargestEigenValues <- function(data) {
   empiricalCovarianceMatrix <- cor(data)
   eigenValues <- eigen(empiricalCovarianceMatrix)$values
   cleanedEigenValues <- eigenValues[4:length(eigenValues)]
   hist(cleanedEigenValues, breaks=50)  
 }
 
-drawHist(RETS)
-
+drawHistLeaveOutLargestEigenValues(RETS)
 ```
 
-something about what we observe
+From comparing these two histograms, we observe that the largest eigen values are much larger than the remaining eigen values to the point that they dwarf the remaining eigen values. They are so much larger that the standard resolution for the histogram essentially hides the smaller eigen values from view.
 
 ```{r}
 eigenValuesMatrix = matrix(nrow=472, ncol=50)
@@ -66,7 +74,7 @@ for (i in 1:50) {
 
 averagedEigens <- rowMeans(eigenValuesMatrix)
 hist(averagedEigens, breaks=50)  
+```
 
-````
 
 
