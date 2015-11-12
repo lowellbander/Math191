@@ -1,0 +1,48 @@
+---
+title: "Homework 3"
+author: "Lowell Bander"
+date: "November 11, 2015"
+output: pdf_document
+---
+
+Problem 2, PCA
+
+```{r}
+run_PCA <- function() {
+  xtrain <- read.csv("ADJCLOSE.csv",sep = ",")
+  xtrain <- xtrain[complete.cases(xtrain),]
+  myPCA = prcomp(xtrain, center = TRUE, scale. = TRUE, retx=TRUE);
+  print(summary(myPCA))
+}
+
+run_PCA()
+
+```
+
+We can therefore see that the top 5 components capture 0.5924 + 0.2092 + 0.1179 + 0.03165 + 0.02779 = 0.97894 = 97.894% of the variance in the data.
+
+```{r}
+xtrain <- read.csv("ADJCLOSE.csv",sep = ",")
+xtrain <- xtrain[complete.cases(xtrain),]
+myPCA = prcomp(xtrain, center = TRUE, scale. = TRUE, retx=TRUE);
+loadings <- myPCA$x
+top5 <- subset(loadings, select=-c(PC6,PC7,PC8,PC9,PC10))
+
+
+```
+
+
+```{r}
+
+```
+
+Problem 3, Random Matrix Theory
+
+```{r}
+load("~/Downloads/CorrMtx_2012_2015_SP500.data")
+# RETS
+empiricalCovarianceMatrix <- cor(RETS)
+eigenValues <- eigen(empiricalCovarianceMatrix)$values
+cleanedEigenValues <- eigenValues[4:length(eigenValues)]
+hist(eigenValues)
+```
