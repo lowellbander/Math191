@@ -62,6 +62,8 @@ drawHistLeaveOutLargestEigenValues(RETS)
 
 From comparing these two histograms, we observe that the largest eigen values are much larger than the remaining eigen values to the point that they dwarf the remaining eigen values. They are so much larger that the standard resolution for the histogram essentially hides the smaller eigen values from view.
 
+We now randomly permute the entries of RETS 50 times, and plot a histogram of the resulting averaged eigenvalues:
+
 ```{r}
 eigenValuesMatrix = matrix(nrow=472, ncol=50)
 
@@ -76,5 +78,18 @@ averagedEigens <- rowMeans(eigenValuesMatrix)
 hist(averagedEigens, breaks=50)  
 ```
 
+The largest eigen value obtained in the first part of this problem is 169.8977, whereas the largest eigen value taken from the random shuffling of the RETS matrix is 3.722766.
 
+We now create Q-Q plots of the eigen values computed thus far.
 
+```{r}
+empiricalCovarianceMatrix <- cor(RETS)
+eigenValues <- eigen(empiricalCovarianceMatrix)$values
+cleanedEigenValues <- eigenValues[4:length(eigenValues)]
+q1 <- quantile(cleanedEigenValues, probs = seq(0, 1, 0.05), na.rm = TRUE);
+qqnorm(q1)
+
+q2 <- quantile(averagedEigens, probs = seq(0, 1, 0.05), na.rm = TRUE);
+qqnorm(q2)
+
+```
