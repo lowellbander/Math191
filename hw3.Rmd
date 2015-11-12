@@ -9,7 +9,7 @@ Problem 2, PCA
 
 ```{r}
 run_PCA <- function() {
-  xtrain <- read.csv("ADJCLOSE.csv",sep = ",")
+  xtrain <- read.csv("~/Desktop/ADJCLOSE.csv",sep = ",")
   xtrain <- xtrain[complete.cases(xtrain),]
   myPCA = prcomp(xtrain, center = TRUE, scale. = TRUE, retx=TRUE);
   print(summary(myPCA))
@@ -22,7 +22,7 @@ run_PCA()
 We can therefore see that the top 5 components capture 0.5924 + 0.2092 + 0.1179 + 0.03165 + 0.02779 = 0.97894 = 97.894% of the variance in the data.
 
 ```{r}
-xtrain <- read.csv("ADJCLOSE.csv",sep = ",")
+xtrain <- read.csv("~/Desktop/ADJCLOSE.csv",sep = ",")
 xtrain <- xtrain[complete.cases(xtrain),]
 myPCA = prcomp(xtrain, center = TRUE, scale. = TRUE, retx=TRUE);
 loadings <- myPCA$x
@@ -41,8 +41,32 @@ Problem 3, Random Matrix Theory
 ```{r}
 load("~/Downloads/CorrMtx_2012_2015_SP500.data")
 # RETS
-empiricalCovarianceMatrix <- cor(RETS)
-eigenValues <- eigen(empiricalCovarianceMatrix)$values
-cleanedEigenValues <- eigenValues[4:length(eigenValues)]
-hist(eigenValues)
+drawHist <- function(data) {
+  empiricalCovarianceMatrix <- cor(data)
+  eigenValues <- eigen(empiricalCovarianceMatrix)$values
+  cleanedEigenValues <- eigenValues[4:length(eigenValues)]
+  hist(cleanedEigenValues, breaks=50)  
+}
+
+drawHist(RETS)
+
 ```
+
+something about what we observe
+
+```{r}
+eigenValuesMatrix = matrix(nrow=472, ncol=50)
+
+for (i in 1:50) {
+  RETSRAND = matrix( sample( c(RETS) ) , nrow = dim(RETS)[1], ncol = dim(RETS)[2])
+  empiricalCovarianceMatrix <- cor(RETSRAND)
+  eigenValues <- eigen(empiricalCovarianceMatrix)$values
+  eigenValuesMatrix[,i] <- eigenValues
+}
+
+averagedEigens <- rowMeans(eigenValuesMatrix)
+hist(averagedEigens, breaks=50)  
+
+````
+
+
