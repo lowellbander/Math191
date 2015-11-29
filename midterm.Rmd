@@ -1,0 +1,57 @@
+---
+title: "Midterm"
+author: "Lowell Bander"
+date: "November 14, 2015"
+output: pdf_document
+---
+
+# Problem 3
+
+```{r}
+library("ISLR", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+plot(Auto)
+
+myAuto <- Auto
+myAuto$name <- NULL
+cor(myAuto)
+
+model <- lm(mpg~., data = myAuto)
+summary(model)
+```
+
+We can see from the high R-squared value of 0.8215 that there is a relationship between the predictors and the response. However, _weight_, _year_, _origin_ have the most statistically significant relationship to the response, and displacement somewhat less so.
+
+The coefficient for the _year_ variable suggests that for every year that passes, MPG increases by 0.750773 miles per gallon.
+
+```{r}
+plot(model)
+
+m<-lm(mpg ~ cylinders + displacement + horsepower + weight * year + origin, 
+   data = myAuto)
+summary(m)
+```
+
+The interaction between weight and year appears to be statistically significant.
+
+# Problem 3
+
+```{r}
+load(file = '~/Downloads/midtermDistanceMatrix.data')
+
+# B = -(1/2)HDH
+
+n <- nrow(DIST)
+I <- diag(n)
+e <- diag(I)
+e_t <- t(e)
+H = I - (1/n) * e %*% e_t
+B <- -(1/2) * H %*% DIST %*% H
+
+barplot(head(eigen(B)$values, n = 10))
+```
+
+We observe that successive eigen values exponentially decay in their representation of the variation in the data.
+
+```{r}
+svd <- svd(B)
+```

@@ -1,0 +1,51 @@
+---
+title: "hw4"
+author: "Lowell Bander"
+date: "November 29, 2015"
+output: pdf_document
+---
+
+#Problem 2
+```{r}
+setwd("~/Desktop/")
+outcomes <- read.csv("England_2009_2010.csv", sep=",", header=FALSE)
+teamnames <- read.csv("England_2009_2010_TeamNames.csv", sep=",", header=FALSE)
+rownames(outcomes) <- teamnames$V1
+colnames(outcomes) <- teamnames$V1
+
+n<-length(teamnames$V1)
+ones<-rep(1,n)
+ones <- as.matrix(ones)
+outcomes <- as.matrix(outcomes)
+s <- 0.5 * (n*ones%*%t(ones) + outcomes%*%t(outcomes))
+s1 <- diag(s)
+L <- diag(s1) - s
+eigendecomp <- eigen(L)
+v <- eigendecomp$vectors[,(n-1)]
+v <- data.frame(v)
+names <- data.frame(teamnames$V1)
+mat <- cbind(names,v)
+colnames(mat) <- c('teamname','rank')
+mat <- mat[order(-mat$rank),]
+mat$teamname
+```
+
+So Chelsea is the most highly ranked team, and the remaining teams follow in descending rank.
+
+#Problem 3
+
+##Part a
+```{r}
+setwd("~/Desktop/")
+load("twoCircles.data")
+plot(A[251:500,], pch=15, col="red")
+points(A[1:250,], pch=25, col="blue")
+```
+
+##Part b
+```{r}
+pca <- prcomp(A, center=TRUE, scale = TRUE)
+x <- pca$x
+plot(x[251:500,], pch=25, col="blue")
+points(x[1:250,], pch=15, col="red" )
+```
