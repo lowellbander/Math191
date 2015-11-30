@@ -1,5 +1,5 @@
 ---
-title: "hw4"
+title: "Math 191 - Assignment 4"
 author: "Lowell Bander"
 date: "November 29, 2015"
 output: pdf_document
